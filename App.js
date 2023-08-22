@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -9,13 +9,20 @@ import {
 import './App.css';
 
 function App() {
+  const initialState=JSON.parse(localStorage.getItem("toDo"))||[];
 
   // Tasks in todo List State
-  const [toDo, setToDo] = useState([]);
+  const [toDo, setToDo] = useState(initialState);
 
   // Temp State
   const [newTask, setNewTask] = useState('');
   const [updateData, setUpdateData] = useState('');
+
+  //local storage
+  useEffect(() => {
+    localStorage.setItem("toDo", JSON.stringify(toDo));
+
+  }, [toDo]);
 
   // Adding tasks 
   const addTask = () => {
