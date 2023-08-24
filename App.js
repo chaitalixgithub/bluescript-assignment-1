@@ -9,6 +9,8 @@ import {
 import './App.css';
 
 function App() {
+  const [darkMode, setDarkMode] = useState(false)
+  
   const initialState=JSON.parse(localStorage.getItem("toDo"))||[];
 
   // Tasks in todo List State
@@ -76,11 +78,26 @@ function App() {
 
 
   return (
+    <div className={darkMode ? 'dark-mode': 'light- mode'}>
+      <div className='container'>
+        
+        <div className='switch-checkbox'>
+          <label className='switch'>
+             <input type="checkbox" onChange={()=> setDarkMode(!darkMode)} />
+             <span className='slider round'> </span>
+          </label>
+        </div>
+       
+      </div>
+      <div>
+        <h4>{darkMode ? 'Dark' : 'Light'} Mode</h4>
+      </div>
+  
     <div className="container App">
 
       <br /><br />
 
-      <h2>To Do List </h2>
+      <h1>To Do List </h1>
 
       <br /><br />
 
@@ -182,6 +199,7 @@ function App() {
         );
       })}
     </div>
+ </div>
   );
 }
 
