@@ -1,5 +1,4 @@
 # bluescript-assignment-1
-</br>
 simple todo list using reactJS
 bootstrap for styling
 fontawesomeicons
